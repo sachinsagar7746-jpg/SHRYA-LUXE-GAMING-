@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SHRYA LUXE GAMEING</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#070b12;
+color:#fff;
+}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+background:#101722;
+border-bottom:1px solid #293142;
+padding:14px 5%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.logo{
+font-size:23px;
+font-weight:bold;
+color:#55f58b;
+}
+
+.nav{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.nav button,.coin{
+padding:10px 14px;
+border:0;
+border-radius:20px;
+background:#202a3a;
+color:#fff;
+cursor:pointer;
+}
+
+.coin{
+color:#ffd43b;
+font-weight:bold;
+}
+
+.hero{
+padding:60px 7%;
+background:radial-gradient(circle at 80% 20%,#164e38,#070b12 60%);
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+.green{
+color:#55f58b;
+}
+
+.hero p{
+color:#aeb8c8;
+max-width:650px;
+line-height:1.6;
+}
+
+.cta{
+margin-top:20px;
+padding:13px 22px;
+border:0;
+border-radius:25px;
+background:#55f58b;
+color:#07110b;
+font-weight:bold;
+cursor:pointer;
+}
+
+section{
+padding:30px 5%;
+}
+
+.title{
+font-size:27px;
+margin-bottom:18px;
+}
+
+.search{
+display:flex;
+max-width:600px;
+margin:auto;
+}
+
+.search input{
+flex:1;
+padding:14px;
+background:#111826;
+border:1px solid #303a4c;
+color:#fff;
+border-radius:12px 0 0 12px;
+}
+
+.search button{
+width:55px;
+border:0;
+background:#55f58b;
+border-radius:0 12px 12px 0;
+}
+
+.categories{
+display:flex;
+gap:10px;
+overflow:auto;
+}
+
+.categories button{
+padding:10px 17px;
+border-radius:22px;
+border:1px solid #303a4c;
+background:#141d2b;
+color:#ddd;
+white-space:nowrap;
+}
+
+.games{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:16px;
+}
+
+.card{
+background:#111826;
+border:1px solid #293447;
+border-radius:15px;
+padding:15px;
+}
+
+.icon{
+font-size:55px;
+text-align:center;
+padding:20px;
+background:#182235;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+.card p{
+color:#8f9aad;
+font-size:13px;
+margin:7px 0 13px;
+}
+
+.play{
+width:100%;
+padding:11px;
+border:0;
+border-radius:8px;
+background:#55f58b;
+font-weight:bold;
+cursor:pointer;
+}
+
+#gameArea{
+display:none;
+text-align:center;
+}
+
+.gamebox{
+max-width:430px;
+margin:auto;
+padding:20px;
+background:#101826;
+border-radius:15px;
+}
+
+canvas{
+max-width:100%;
+background:#080d15;
+border-radius:12px;
+}
+
+.ttt{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:7px;
+max-width:300px;
+margin:20px auto;
+}
+
+.cell{
+height:85px;
+font-size:35px;
+border:0;
+border-radius:8px;
+background:#202b3d;
+color:#fff;
+cursor:pointer;
+}
+
+.controls{
+display:flex;
+justify-content:center;
+gap:8px;
+flex-wrap:wrap;
+margin-top:15px;
+}
+
+.controls button{
+padding:12px 18px;
+border:0;
+border-radius:10px;
+background:#55f58b;
+font-weight:bold;
+}
+
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:500;
+background:#000b;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.modal-box{
+width:min(400px,100%);
+background:#111826;
+border:1px solid #354158;
+border-radius:18px;
+padding:25px;
+}
+
+.modal-box input{
+width:100%;
+padding:13px;
+margin:7px 0;
+background:#080d15;
+border:1px solid #303a4c;
+color:white;
+border-radius:8px;
+}
+
+.modal-box button{
+width:100%;
+padding:13px;
+margin-top:10px;
+border:0;
+border-radius:8px;
+background:#55f58b;
+font-weight:bold;
+}
+
+.close{
+float:right;
+font-size:25px;
+cursor:pointer;
+}
+
+footer{
+text-align:center;
+padding:30px;
+color:#7f8999;
+border-top:1px solid #222c3b;
+}
+
+@media(max-width:600px){
+.hero h1{font-size:36px}
+header{padding:12px}
+.logo{font-size:18px}
+.nav button,.coin{padding:8px 10px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">🎮 Sachin Gaming</div>
+
+<div class="nav">
+
+<button onclick="goHome()">🏠 Home</button>
+
+<div class="coin">
+🪙 <span id="coins">100</span>
+</div>
+
+<button onclick="openLogin()">👤 Login</button>
+
+</div>
+
+</header>
+
+
+<!-- HOME -->
+
+<div class="hero" id="home">
+
+<h1>
+Welcome to <span class="green">Sachin Gaming</span>
+</h1>
+
+<p>
+Play fun games directly in your browser.
+Choose your favorite game, collect coins
+and enjoy gaming on mobile or computer.
+</p>
+
+<button class="cta"
+onclick="document.getElementById('games').scrollIntoView()">
+🎮 Play Games
+</button>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<section>
+
+<div class="search">
+
+<input
+id="search"
+placeholder="Search games..."
+oninput="searchGames()">
+
+<button>🔍</button>
+
+</div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section>
+
+<h2 class="title">🎯 Categories</h2>
+
+<div class="categories">
+
+<button onclick="filterGames('all')">
+All
+</button>
+
+<button onclick="filterGames('arcade')">
+👾 Arcade
+</button>
+
+<button onclick="filterGames('puzzle')">
+🧩 Puzzle
+</button>
+
+<button onclick="filterGames('sports')">
+⚽ Sports
+</button>
+
+<button onclick="filterGames('racing')">
+🏎️ Racing
+</button>
+
+</div>
+
+</section>
+
+
+<!-- GAMES -->
+
+<section id="games">
+
+<h2 class="title">🔥 Play Now</h2>
+
+<div class="games">
+
+
+<div class="card"
+data-category="arcade"
+data-name="Snake">
+
+<div class="icon">🐍</div>
+
+<h3>Snake</h3>
+
+<p>Arcade • Classic</p>
+
+<button class="play"
+onclick="startSnake()">
+▶ Play
+</button>
+
+</div>
+
+
+<div class="card"
+data-category="puzzle"
+data-name="Tic Tac Toe">
+
+<div class="icon">❌⭕</div>
+
+<h3>Tic-Tac-Toe</h3>
+
+<p>Puzzle • 2 Player</p>
+
+<button class="play"
+onclick="startTTT()">
+▶ Play
+</button>
+
+</div>
+
+
+<div class="card"
+data-category="sports"
+data-name="Penalty Kick">
+
+<div class="icon">⚽</div>
+
+<h3>Penalty Kick</h3>
+
+<p>Sports • Skill</p>
+
+<button class="play"
+onclick="startPenalty()">
+▶ Play
+</button>
+
+</div>
+
+
+<div class="card"
+data-category="arcade"
+data-name="Target">
+
+<div class="icon">🎯</div>
+
+<h3>Target Click</h3>
+
+<p>Arcade • Reflex</p>
+
+<button class="play"
+onclick="startTarget()">
+▶ Play
+</button>
+
+</div>
+
+
+<div class="card"
+data-category="racing"
+data-name="Car Dodge">
+
+<div class="icon">🏎️</div>
+
+<h3>Car Dodge</h3>
+
+<p>Racing • Reflex</p>
+
+<button class="play"
+onclick="startCar()">
+▶ Play
+</button>
+
+</div>
+
+
+<div class="card"
+data-category="puzzle"
+data-name="Guess Number">
+
+<div class="icon">🔢</div>
+
+<h3>Guess Number</h3>
+
+<p>Puzzle • Brain</p>
+
+<button class="play"
+onclick="startGuess()">
+▶ Play
+</button>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<!-- GAME AREA -->
+
+<section id="gameArea">
+
+<h2 class="title" id="gameTitle"></h2>
+
+<div id="gameContent"></div>
+
+<button class="cta"
+onclick="closeGame()">
+⬅ Back to Games
+</button>
+
+</section>
+
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+
+<div class="modal-box">
+
+<span class="close"
+onclick="closeLogin()">×</span>
+
+<h2>🔐 Sachin Gaming Login</h2>
+
+<br>
+
+<input
+id="username"
+placeholder="Enter username">
+
+<input
+id="password"
+type="password"
+placeholder="Enter password">
+
+<button onclick="login()">
+Login
+</button>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 <b>Sachin Gaming</b> 🎮
+
+</footer>
+
+
+<script>
+
+/* COINS */
+
+let coins =
+Number(localStorage.getItem("sachinCoins") || 100);
+
+document.getElementById("coins").innerText=coins;
+
+
+function spendCoin(){
+
+if(coins < 5){
+
+alert("🪙 Not enough coins!");
+
+return false;
+
+}
+
+coins-=5;
+
+localStorage.setItem(
+"sachinCoins",
+coins
+);
+
+document.getElementById(
+"coins"
+).innerText=coins;
+
+return true;
+
+}
+
+
+/* HOME */
+
+function goHome(){
+
+document
+.getElementById("home")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+/* SEARCH */
+
+function searchGames(){
+
+let text=
+document.getElementById("search")
+.value
+.toLowerCase();
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+let name=
+card.dataset.name
+.toLowerCase();
+
+card.style.display=
+name.includes(text)
+?"block"
+:"none";
+
+});
+
+}
+
+
+/* CATEGORY */
+
+function filterGames(category){
+
+document
+.querySelectorAll(".card")
+.forEach(card=>{
+
+card.style.display=
+category==="all" ||
+card.dataset.category===category
+?"block"
+:"none";
+
+});
+
+}
+
+
+/* GAME SCREEN */
+
+function showGame(title,html){
+
+document.getElementById(
+"games"
+).style.display="none";
+
+document.getElementById(
+"gameArea"
+).style.display="block";
+
+document.getElementById(
+"gameTitle"
+).innerText=title;
+
+document.getElementById(
+"gameContent"
+).innerHTML=html;
+
+document.getElementById(
+"gameArea"
+).scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+
+function closeGame(){
+
+document.getElementById(
+"gameArea"
+).style.display="none";
+
+document.getElementById(
+"games"
+).style.display="block";
+
+goHome();
+
+}
+
+
+/* LOGIN */
+
+function openLogin(){
+
+document.getElementById(
+"loginModal"
+).style.display="flex";
+
+}
+
+
+function closeLogin(){
+
+document.getElementById(
+"loginModal"
+).style.display="none";
+
+}
+
+
+function login(){
+
+let user=
+document.getElementById(
+"username"
+).value.trim();
+
+if(!user){
+
+alert("Username enter karo!");
+
+return;
+
+}
+
+localStorage.setItem(
+"sachinUser",
+user
+);
+
+alert(
+"Welcome "+user+" 🎮"
+);
+
+closeLogin();
+
+}
+
+
+/* SNAKE */
+
+let snakeTimer;
+
+function startSnake(){
+
+if(!spendCoin()) return;
+
+showGame(
+"🐍 Snake",
+`
+<div class="gamebox">
+
+<canvas
+id="snakeCanvas"
+width="360"
+height="360">
+</canvas>
+
+<h3 id="snakeScore">
+Score: 0
+</h3>
+
+<div class="controls">
+
+<button onclick="snakeMove(0,-1)">
+⬆️
+</button>
+
+<button onclick="snakeMove(-1,0)">
+⬅️
+</button>
+
+<button onclick="snakeMove(1,0)">
+➡️
+</button>
+
+<button onclick="snakeMove(0,1)">
+⬇️
+</button>
+
+</div>
+
+<p>Keyboard arrows bhi use kar sakte ho.</p>
+
+</div>
+`
+);
+
+let canvas=
+document.getElementById(
+"snakeCanvas"
+);
+
+let ctx=
+canvas.getContext("2d");
+
+let size=18;
+
+let snake=[
+{x:9,y:9},
+{x:8,y:9},
+{x:7,y:9}
+];
+
+let direction={
+x:1,
+y:0
+};
+
+let food={
+x:Math.floor(Math.random()*20),
+y:Math.floor(Math.random()*20)
+};
+
+let score=0;
+
+window.snakeMove=function(x,y){
+
+if(
+x!==-direction.x ||
+y!==-direction.y
+){
+
+direction={x,y};
+
+}
+
+};
+
+
+document.onkeydown=function(e){
+
+if(e.key==="ArrowUp")
+snakeMove(0,-1);
+
+if(e.key==="ArrowDown")
+snakeMove(0,1);
+
+if(e.key==="ArrowLeft")
+snakeMove(-1,0);
+
+if(e.key==="ArrowRight")
+snakeMove(1,0);
+
+};
+
+
+function gameLoop(){
+
+let head={
+x:snake[0].x+direction.x,
+y:snake[0].y+direction.y
+};
+
+
+if(
+head.x<0 ||
+head.y<0 ||
+head.x>=20 ||
+head.y>=20 ||
+snake.some(
+part=>part.x===head.x &&
+part.y===head.y
+)
+){
+
+alert(
+"Game Over! Score: "+score
+);
+
+closeGame();
+
+return;
+
+}
+
+
+snake.unshift(head);
+
+
+if(
+head.x===food.x &&
+head.y===food.y
+){
+
+score++;
+
+document.getElementById(
+"snakeScore"
+).innerText=
+"Score: "+score;
+
+food={
+x:Math.floor(Math.random()*20),
+y:Math.floor(Math.random()*20)
+};
+
+}else{
+
+snake.pop();
+
+}
+
+
+ctx.fillStyle="#080d15";
+
+ctx.fillRect(
+0,0,
+canvas.width,
+canvas.height
+);
+
+
+ctx.fillStyle="#55f58b";
+
+snake.forEach(part=>{
+
+ctx.fillRect(
+part.x*size,
+part.y*size,
+size-2,
+size-2
+);
+
+});
+
+
+ctx.fillStyle="#ff5263";
+
+ctx.fillRect(
+food.x*size,
+food.y*size,
+size-2,
+size-2
+);
+
+
+snakeTimer=setTimeout(
+gameLoop,
+120
+);
+
+}
+
+gameLoop();
+
+}
+
+
+/* TIC TAC TOE */
+
+let board=[];
+let turn="X";
+
+
+function startTTT(){
+
+if(!spendCoin()) return;
+
+board=
+Array(9).fill("");
+
+turn="X";
+
+showGame(
+"❌⭕ Tic-Tac-Toe",
+`
+<div class="gamebox">
+
+<div class="ttt">
+
+${board.map(
+(_,i)=>
+`
+<button
+class="cell"
+onclick="tttClick(${i})">
+</button>
+`
+).join("")}
+
+</div>
+
+<h3 id="tttMessage">
+X की turn
+</h3>
+
+</div>
+`
+);
+
+}
+
+
+function tttClick(index){
+
+if(board[index]) return;
+
+board[index]=turn;
+
+document
+.querySelectorAll(".cell")
+[index]
+.innerText=turn;
+
+
+if(checkWin()){
+
+document.getElementById(
+"tttMessage"
+).innerText=
+turn+" wins! 🎉";
+
+return;
+
+}
+
+
+if(board.every(Boolean)){
+
+document.getElementById(
+"tttMessage"
+).innerText=
+"Draw! 🤝";
+
+return;
+
+}
+
+
+turn=
+turn==="X"
+?"O"
+:"X";
+
+document.getElementById(
+"tttMessage"
+).innerText=
+turn+" की turn";
+
+}
+
+
+function checkWin(){
+
+let combinations=[
+
+[0,1,2],
+[3,4,5],
+[6,7,8],
+
+[0,3,6],
+[1,4,7],
+[2,5,8],
+
+[0,4,8],
+[2,4,6]
+
+];
+
+return combinations.some(
+combo=>
+combo.every(
+i=>board[i]===turn
+)
+);
+
+}
+
+
+/* PENALTY */
+
+function startPenalty(){
+
+if(!spendCoin()) return;
+
+showGame(
+"⚽ Penalty Kick",
+`
+<div class="gamebox">
+
+<h3>
+Keeper को चकमा देकर goal करो!
+</h3>
+
+<div class="controls">
+
+<button onclick="kick('Left')">
+⬅️ Left
+</button>
+
+<button onclick="kick('Center')">
+🎯 Center
+</button>
+
+<button onclick="kick('Right')">
+Right ➡️
+</button>
+
+</div>
+
+<h2 id="kickResult">
+Choose direction
+</h2>
+
+</div>
+`
+);
+
+}
+
+
+function kick(player){
+
+let directions=[
+"Left",
+"Center",
+"Right"
+];
+
+let keeper=
+directions[
+Math.floor(
+Math.random()*3
+)
+];
+
+document.getElementById(
+"kickResult"
+).innerText=
+player===keeper
+?"🧤 SAVED!"
+:"⚽ GOAL! 🎉";
+
+}
+
+
+/* TARGET */
+
+let targetScore=0;
+
+
+function startTarget(){
+
+if(!spendCoin()) return;
+
+targetScore=0;
+
+showGame(
+"🎯 Target Click",
+`
+<div
+class="gamebox"
+style="height:300px">
+
+<button
+id="targetButton"
+onclick="hitTarget()"
+style="
+width:70px;
+height:70px;
+border-radius:50%;
+background:#ff5263;
+font-size:28px;
+position:relative;
+">
+🎯
+</button>
+
+<h3 id="targetText">
+Hit target 10 times!
+</h3>
+
+</div>
+`
+);
+
+placeTarget();
+
+}
+
+
+function placeTarget(){
+
+let target=
+document.getElementById(
+"targetButton"
+);
+
+if(!target) return;
+
+target.style.left=
+Math.random()*250+"px";
+
+target.style.top=
+Math.random()*130+"px";
+
+}
+
+
+function hitTarget(){
+
+targetScore++;
+
+if(targetScore>=10){
+
+document.getElementById(
+"targetText"
+).innerText=
+"🏆 You Win!";
+
+return;
+
+}
+
+document.getElementById(
+"targetText"
+).innerText=
+"Score: "+targetScore+"/10";
+
+placeTarget();
+
+}
+
+
+/* NUMBER GUESS */
+
+let secretNumber;
+
+
+function startGuess(){
+
+if(!spendCoin()) return;
+
+secretNumber=
+Math.floor(
+Math.random()*20
+)+1;
+
+showGame(
+"🔢 Guess Number",
+`
+<div class="gamebox">
+
+<p>
+1 से 20 के बीच number guess करो.
+</p>
+
+<br>
+
+<input
+id="guessInput"
+type="number"
+min="1"
+max="20"
+style="
+padding:12px;
+background:#080d15;
+color:white;
+border:1px solid #333;
+">
+
+<button
+class="cta"
+onclick="checkNumber()">
+Check
+</button>
+
+<h3 id="guessResult"></h3>
+
+</div>
+`
+);
+
+}
+
+
+function checkNumber(){
+
+let guess=
+Number(
+document.getElementById(
+"guessInput"
+).value
+);
+
+let result=
+document.getElementById(
+"guessResult"
+);
+
+if(guess===secretNumber){
+
+result.innerText=
+"🎉 Correct! You Win!";
+
+}else if(
+guess<secretNumber
+){
+
+result.innerText=
+"⬆️ Bigger number";
+
+}else{
+
+result.innerText=
+"⬇️ Smaller number";
+
+}
+
+}
+
+
+/* CAR DODGE */
+
+let carScore=0;
+
+
+function startCar(){
+
+if(!spendCoin()) return;
+
+carScore=0;
+
+showGame(
+"🏎️ Car Dodge",
+`
+<div class="gamebox">
+
+<h2>🏎️</h2>
+
+<p>
+Button दबाकर car को आगे बढ़ाओ!
+</p>
+
+<button
+class="cta"
+onclick="carTap()">
+🏎️ DRIVE
+</button>
+
+<h2 id="carScore">
+Score: 0
+</h2>
+
+</div>
+`
+);
+
+}
+
+
+function carTap(){
+
+carScore++;
+
+document.getElementById(
+"carScore"
+).innerText=
+"Score: "+carScore;
+
+}
+
+</script>
+
+</body>
+</html>
